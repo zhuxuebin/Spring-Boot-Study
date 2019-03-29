@@ -1,7 +1,5 @@
 package com.spring.boot.entity;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -28,7 +26,7 @@ public class Reader implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Arrays.asList(new SimpleGrantedAuthority("READER"));//这样写好像没什么用，"READER"角色没起作用
+        return Arrays.asList(new SimpleGrantedAuthority("ROLE_READER"));//这样写好像没什么用，"READER"角色没起作用
     }
 
     @Override
