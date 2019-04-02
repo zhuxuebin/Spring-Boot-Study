@@ -1,8 +1,11 @@
 package com.spring.boot.controller;
 
 import com.spring.boot.entity.Book;
+import com.spring.boot.properties.AmazonProperties;
 import com.spring.boot.repository.ReadingListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.CollectionUtils;
@@ -19,14 +22,17 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/readingList")
+@ConfigurationProperties(prefix = "amazon") //@EnableConfigurationProperties不用显示配置，spring boot自动配置已经加上了
 public class ReadingListController {
 
+    @Autowired
     private ReadingListRepository readingListRepository;
 
     @Autowired
-    public ReadingListController(ReadingListRepository readingListRepository) {
-        this.readingListRepository = readingListRepository;
-    }
+    private AmazonProperties amazonProperties;
+
+    @Value("${myprofiles.name}")
+    private String myProfilesName;
 
     @RequestMapping(value = "/{reader}", method = RequestMethod.GET)
     public String readersBooks(@PathVariable("reader") String reader, Model model) {

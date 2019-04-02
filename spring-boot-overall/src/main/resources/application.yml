@@ -1,0 +1,35 @@
+# yml不同层级是一个空格，不是一个换行符
+server:
+ port: 8081
+# 解决Spring Data JPA could not initialize proxy – no Session 报错
+spring:
+ jpa:
+  properties:
+   hibernate:
+    enable_lazy_load_no_trans: true
+ ## 这个在生产环境中不能设置为false, 一般用于开发调试，禁止使用thymeleaf模板
+ thymeleaf:
+   cache: false
+ profiles:
+  active: dev
+
+# 属性值
+amazon:
+ associateId: zxb
+
+#不同profile字段值不一样
+myprofiles:
+ name: default
+---
+spring:
+ profiles: dev
+
+myprofiles:
+ name: devProfiles
+
+---
+spring:
+ profiles: prod
+
+myprofiles:
+ name: prodProfiles
