@@ -22,7 +22,6 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/readingList")
-@ConfigurationProperties(prefix = "amazon") //@EnableConfigurationProperties不用显示配置，spring boot自动配置已经加上了
 public class ReadingListController {
 
     @Autowired
@@ -30,9 +29,6 @@ public class ReadingListController {
 
     @Autowired
     private AmazonProperties amazonProperties;
-
-    @Value("${myprofiles.name}")
-    private String myProfilesName;
 
     @RequestMapping(value = "/{reader}", method = RequestMethod.GET)
     public String readersBooks(@PathVariable("reader") String reader, Model model) {

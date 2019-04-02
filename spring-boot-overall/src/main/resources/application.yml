@@ -23,6 +23,8 @@ myprofiles:
 ---
 spring:
  profiles: dev
+ thymeleaf:
+  cache: false
 
 myprofiles:
  name: devProfiles
