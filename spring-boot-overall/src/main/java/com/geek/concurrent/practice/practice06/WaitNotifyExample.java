@@ -31,7 +31,7 @@ public class WaitNotifyExample {
             while(true) {
                 synchronized (this) {
                     System.out.println("consumer-begin-count="+count);
-                    while (count <= 0) {
+                    while (count <= 100) {
                         wait();//wait会释放锁，之后被notify之后要重新去拿锁才能被唤醒往下执行；拿到锁之后并不会执行上面的sout
                     }
                     count--;
@@ -48,7 +48,6 @@ public class WaitNotifyExample {
 
         try {
             while(true) {
-                Thread.sleep(1000);
                 synchronized (this) {
                     System.out.println("producer-begin-count="+count);
                     while (count >= 10) {
@@ -56,7 +55,6 @@ public class WaitNotifyExample {
                     }
                     count++;
                     System.out.println("producer:" + count);
-                    Thread.sleep(10000);
                     notify();
                 }
                 Thread.sleep(1000);
