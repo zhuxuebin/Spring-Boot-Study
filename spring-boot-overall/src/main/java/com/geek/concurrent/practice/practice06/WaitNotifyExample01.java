@@ -1,19 +1,19 @@
 package com.geek.concurrent.practice.practice06;
 
 /**
- * @ClassName WaitNotifyExample
+ * @ClassName WaitNotifyExample01
  * @Description TODO
  * @Author xuery
  * @Date 2019/4/20 12:29
  * @Version 1.0
  */
-public class WaitNotifyExample {
+public class WaitNotifyExample01 {
 
 
     int count = 0;
 
     public static void main(String[] args) {
-        WaitNotifyExample example = new WaitNotifyExample();
+        WaitNotifyExample01 example = new WaitNotifyExample01();
         Thread t1 = new Thread(()->{
             example.consumer();
         });
