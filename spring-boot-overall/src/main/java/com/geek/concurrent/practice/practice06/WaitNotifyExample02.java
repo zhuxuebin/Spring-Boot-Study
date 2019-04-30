@@ -72,7 +72,7 @@ public class WaitNotifyExample02 {
                 }
             }
         });
-        
+
 
         t1.start();
         t2.start();

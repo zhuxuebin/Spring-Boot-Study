@@ -1,5 +1,15 @@
 package com.spring.boot.temp;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.Semaphore;
+import java.util.concurrent.locks.ReentrantLock;
+import java.util.stream.Collectors;
+
 /**
  * @ClassName StringExample
  * @Description TODO
@@ -10,6 +20,12 @@ package com.spring.boot.temp;
 public class StringExample {
 
     public static void main(String[] args) {
-        System.out.println("1".compareTo("10"));
+        List<String> list = new ArrayList<>(Arrays.asList("1","2","3"));
+        list = list.stream().filter(s->!"1".equals(s)).collect(Collectors.toList());
+        System.out.println(list);
+
+        ReentrantLock lock = new ReentrantLock();
+        lock.lock();
+        lock.unlock();
     }
 }
