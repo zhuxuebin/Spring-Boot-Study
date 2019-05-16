@@ -31,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //这里要测一下："/"到底是拦截什么-就是指localhost:8080, antMatchers是或的关系，有一个通过就通过了
                 //访问"readingList/**"则登录用户必须要有READER角色，否则认证失败；注意这里要先输入用户名密码再认证角色
                 .antMatchers("/readingList/**").permitAll()
-//                .antMatchers("/").permitAll() // "/"不用认证
+                .antMatchers("/**").permitAll() // "/"不用认证
                 .anyRequest().authenticated() //不加这个则其他不符合上述条件的都不用认证；加了这个则不符合上述条件的都需要认证
                 .and()
                 .formLogin()
