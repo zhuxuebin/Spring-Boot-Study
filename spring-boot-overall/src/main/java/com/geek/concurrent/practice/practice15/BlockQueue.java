@@ -25,29 +25,6 @@ public class BlockQueue<T> {
 
     private List<T> list = new ArrayList<>();
 
-
-    public static void main(String[] args) throws Exception{
-        BlockQueue<Integer> blockQueue = new BlockQueue<>();
-        Thread t1 = new Thread(()->{
-            for(int i=0;i<5;i++){
-                blockQueue.enque(i);
-            }
-        });
-        Thread t2 = new Thread(()->{
-            for(int i=0;i<10;i++) {
-                Integer value = blockQueue.deque();
-                System.out.println(value);
-            }
-        });
-
-        t1.start();
-        t2.start();
-
-        t1.join(10000);
-        t2.join(10000);
-    }
-
-
     /**
      * 入队列
      * @param t
@@ -55,7 +32,7 @@ public class BlockQueue<T> {
     public void enque(T t){
         try {
             lock.lock();
-
+            //条件变量1
             while(list.size() == size){
                 notFull.await(); //队列已满，等待队列不满
             }
@@ -76,6 +53,7 @@ public class BlockQueue<T> {
     public T deque(){
         try{
             lock.lock();
+            //条件变量2
             while(list.size() == 0){
                 notEmpty.await();
             }

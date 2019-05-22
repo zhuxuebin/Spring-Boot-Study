@@ -27,5 +27,10 @@ public class StringExample {
         ReentrantLock lock = new ReentrantLock();
         lock.lock();
         lock.unlock();
+
+        String s = "ello";
+        String replaceS = s.replace("el","xxx");
+        System.out.println(s);
+        System.out.println(replaceS);
     }
 }
