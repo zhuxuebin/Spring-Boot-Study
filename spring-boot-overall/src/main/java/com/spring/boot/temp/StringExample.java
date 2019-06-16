@@ -28,7 +28,9 @@ public class StringExample {
         lock.lock();
         lock.unlock();
 
-        String s = "sadasdas";
-        System.out.println(s.substring(0,2).contains(s.substring(0,1)));
+        String s = "ello";
+        String replaceS = s.replace("el","xxx");
+        System.out.println(s);
+        System.out.println(replaceS);
     }
 }

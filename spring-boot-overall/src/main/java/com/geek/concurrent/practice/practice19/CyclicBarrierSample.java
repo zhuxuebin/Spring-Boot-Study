@@ -16,6 +16,11 @@ public class CyclicBarrierSample<P,D> {
     private final Executor executor = Executors.newFixedThreadPool(1);
 
     private final CyclicBarrier cyclicBarrier = new CyclicBarrier(2,()->{
+        /**
+         * *todo xuery* 这里为什么要用一个线程池开启一个线程执行check呢?这个跟cyclicBarrier执行回调函数的时机有关
+         * 回调函数是将计数器减为0的线程执行的，而且是在唤醒其他线程之前至执行的，如果这里不开启一个线程池直接check，
+         * 如果check的时间过长，会导致其他线程一直阻塞，起不到多线程提升效率的作用
+         */
         executor.execute(()->check());
     });
 
