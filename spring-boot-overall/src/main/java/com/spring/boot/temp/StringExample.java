@@ -27,5 +27,8 @@ public class StringExample {
         ReentrantLock lock = new ReentrantLock();
         lock.lock();
         lock.unlock();
+
+        String s = "sadasdas";
+        System.out.println(s.substring(0,2).contains(s.substring(0,1)));
     }
 }
