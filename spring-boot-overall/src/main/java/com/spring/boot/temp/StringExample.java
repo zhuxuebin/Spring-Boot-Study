@@ -1,5 +1,7 @@
 package com.spring.boot.temp;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -32,5 +34,12 @@ public class StringExample {
         String replaceS = s.replace("el","xxx");
         System.out.println(s);
         System.out.println(replaceS);
+
+        List<String> unitAreaCodes = new ArrayList<>(Arrays.asList("JU001","JU002","JU003"));
+        String unitAreaCodesStr = String.join(",",unitAreaCodes);
+        if(StringUtils.isNotBlank(unitAreaCodesStr) && unitAreaCodesStr.length() > 10){
+            unitAreaCodesStr = unitAreaCodesStr.substring(0,10);
+        }
+        System.out.println(unitAreaCodesStr);
     }
 }
